@@ -1,19 +1,38 @@
 <html>
 <body>
 
-Your input is: <?php echo $_GET["size"]; ?><br>
+Your input is: <?php echo $_POST["size"]; ?><br>
 
-<table border='l'><tr><td></td></tr></table>
+<?php 
 
-<?php for($i=0; $i<$_GET["size"]; $i++){
+$input = $_POST["size"];
 
-    echo($i);
+$totalString = "<table border='l' id='table'>";
 
-} ?>
+for($i=1; $i<$input+1; $i++){
+
+    $row = "<tr>";
+
+    for($j=1; $j<$input+1; $j++){
+
+        $mul = $i*$j;
+
+        $row = $row."<td>$mul</td>";
+    
+    }
+
+    $row = $row."</tr>";
+
+    $totalString = $totalString.$row;
+
+} 
+
+$totalString."</table>";
+
+echo($totalString);
+
+?>
 
 </body>
 </html>
 
-
-
-<!-- <table border=1><tr><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><td>1</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><td>2</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td></tr><tr><td>3</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td></tr><tr><td>4</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td></tr><tr><td>5</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td></tr> -->
