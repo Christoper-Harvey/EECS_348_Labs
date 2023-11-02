@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <!-- I copied the general layout of the example given -->
+    <h1>EECS 348 Lab Seven Practice Two</h1>
+</head>
+
+<!-- css style for the text of the div that we are changing. -->
+<style>
+    #paragraph {
+        border-style: solid;
+        border-width: 5px;
+    }
+</style>
+
+<body>
+    <!-- init starting text. I had fun with this one. -->
+    <div id="paragraph">
+        You'll miss me when I'm gone!
+    </div>
+    <!-- add color changing form which I copied from the exmaple. -->
+    Border Red (0-255): <input type="text" id="border_R" value=""> <br>
+    Border Green (0-255): <input type="text" id="border_G" value=""> <br>
+    Border Blue (0-255): <input type="text" id="border_B" value=""> <br>
+    Border Width: <input type="text" id="border_width" value=""> <br>
+    Background Red (0-255): <input type="text" id="bg_R" value=""> <br>
+    Background Green (0-255): <input type="text" id="bg_G" value=""> <br>
+    Background Blue (0-255): <input type="text" id="bg_B" value=""> <br>
+    <!-- add onclick events to the button to manage both the text and color of the div. -->
+    <button onclick="changeColor(); changeText();">Change the output</button> <br>
+</body>
+
+<script>
+
+    // init all the possible phrases my sassy program will say.
+    phrases = ['Ouch!', 'Hello World!', "I knew you'd be back", 'I am bored...', 'DAAAAAAAANG, that border thick!', "Yo Mamma so fat, when she fell I didn't laugh, but the sidewalk cracked up."];
+
+    // grab div object to change.
+    para = document.getElementById('paragraph');
+
+    function changeText(){
+        // I set the inner text of the div by using a random int function to index the phrases list and get new text per click.
+        para.innerHTML = phrases[Math.floor(Math.random()*6)];
+    }
+
+    // color change. This is super basic. Just grab the values from each form input
+    function changeColor() {
+        var border_R = document.getElementById("border_R").value;
+        var border_G = document.getElementById("border_G").value;
+        var border_B = document.getElementById("border_B").value;
+        var border_width = document.getElementById("border_width").value;
+        var bg_R = document.getElementById("bg_R").value;
+        var bg_G = document.getElementById("bg_G").value;
+        var bg_B = document.getElementById("bg_B").value;
+        // grab the div. I just realized I did this twice and could have just used the same name.
+        var tag = document.getElementById("paragraph");
+        // update the CSS properties of border color, width, and background color by the inputed form feilds using PHP.
+        tag.style.borderColor = `rgb(${border_R},${border_G},${border_B})`;
+        tag.style.borderWidth = border_width
+        tag.style.backgroundColor = `rgb(${bg_R},${bg_G},${bg_B})`;
+}
+
+</script>
+
+</html>
